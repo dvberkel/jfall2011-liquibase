@@ -7,7 +7,7 @@
 
 	<changeSet id="jfall-0" author="dvb">
 		<createTable tableName="user">
-			<column name="id" type="int">
+			<column name="id" type="bigint">
 				<constraints primaryKey="true" nullable="false"/>
 			</column>
 			<column name="nick" type="varchar(255)"/>
