@@ -35,5 +35,17 @@
 			referencedTableName="user" referencedColumnNames="id"
 		/>
 	</changeSet>
+	
+	<changeSet id="jfall-2" author="dvb" context="test">
+		<insert tableName="user">
+			<column name="id" valueNumeric="0"/>
+			<column name="nickname" value="dvb"/>
+		</insert>
+		<rollback>
+			<delete tableName="user">
+				<where>id=0</where>
+			</delete>
+		</rollback>
+	</changeSet>
 
 </databaseChangeLog>
