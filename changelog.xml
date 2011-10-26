@@ -13,5 +13,9 @@
 			<column name="nick" type="varchar(255)"/>
 		</createTable>
 	</changeSet>
+
+	<changeSet id="jfall-0a" author="dvb">
+		<renameColumn tableName="user" oldColumnName="nick" newColumnName="nickname"/>
+	</changeSet>
  
 </databaseChangeLog>
