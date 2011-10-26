@@ -18,4 +18,22 @@
 		<renameColumn tableName="user" oldColumnName="nick" newColumnName="nickname"/>
 	</changeSet>
  
+	<changeSet id="jfall-1" author="dvb">
+		<createTable tableName="message">
+			<column name="id" type="int">
+				<constraints primaryKey="true" nullable="false"/>
+			</column>
+			<column name="body" type="varchar(1024)"/>
+			<column name="author" type="int"/>
+		</createTable>
+	</changeSet>
+ 
+	<changeSet id="jfall-1a" author="dvb">
+		<addForeignKeyConstraint 
+			constraintName="fk_address_person"
+			baseTableName="message" baseColumnNames="author"
+			referencedTableName="user" referencedColumnNames="id"
+		/>
+	</changeSet>
+
 </databaseChangeLog>
