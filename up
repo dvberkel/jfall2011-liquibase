@@ -3,8 +3,12 @@
 use strict;
 use warnings;
 
-my $nextBranch = nextBranch(currentBranch());
-print "$nextBranch\n";
+checkout(nextBranch(currentBranch()));
+
+sub checkout {
+	my $branch = shift @_;
+	system("git checkout $branch");
+}
 
 sub nextBranch {
 	my $nextBranch = shift @_;
