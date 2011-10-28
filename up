@@ -3,13 +3,18 @@
 use strict;
 use warnings;
 
+my $nextBranch = nextBranch(currentBranch());
+print "$nextBranch\n";
 
-my $nextBranch = currentBranch();
-print $nextBranch;
-if ($nextBranch =~ m/([^-]+)-(\d+)/) {
-	my $branchName = $1;
-	my $stage = $2;
-	print "$branchName $stage\n";
+sub nextBranch {
+	my $nextBranch = shift @_;
+	if ($nextBranch =~ m/([^-]+)(-)(\d+)/) {
+		my $branchName = $1;
+		my $separator = $2;
+		my $stage = $3;
+		$nextBranch = $branchName . $separator . nextStage($stage);
+	}
+	return $nextBranch;
 }
 
 sub nextStage {
