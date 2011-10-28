@@ -12,7 +12,7 @@ sub checkout {
 
 sub nextBranch {
 	my $nextBranch = shift @_;
-	if ($nextBranch =~ m/([^-]+)(-)(\d+)/) {
+	if ($nextBranch =~ m/(.+)(-)(\d+)/) {
 		my $branchName = $1;
 		my $separator = $2;
 		my $stage = $3;
