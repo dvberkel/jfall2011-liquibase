@@ -15,7 +15,7 @@
 	</changeSet>
 
 	<changeSet id="jfall-0a" author="dvb">
-		<renameColumn tableName="user" oldColumnName="nick" newColumnName="nickname"/>
+		<renameColumn tableName="user" oldColumnName="nick" newColumnName="nickname" columnDataType="varchar(255)"/>
 	</changeSet>
  
 </databaseChangeLog>
