@@ -19,6 +19,18 @@ sub nextBranch {
 	return adjacentBranch(\&nextStage, shift @_);
 }
 
+sub nextStage {
+	return adjacentStage(sub{$_[0] + 1}, shift @_);
+}
+
+sub previousBranch {
+	return adjacentBranch(\&previousStage, shift @_);
+}
+
+sub previousStage {
+	return adjacentStage(sub{$_[0] - 1}, shift @_);
+}
+
 sub adjacentBranch {
 	my $adjacentStage = shift @_;
 	my $adjacentBranch = shift @_;
@@ -31,10 +43,6 @@ sub adjacentBranch {
 	return $adjacentBranch;
 }
 
-sub nextStage {
-	return adjacentStage(sub{$_[0] + 1}, shift @_);
-}
-
 sub adjacentStage {
 	my $operator = shift @_;
 	my $stage = shift @_;
@@ -45,14 +53,6 @@ sub adjacentStage {
 	} else {
 		return "$adjacentStage";
 	}
-}
-
-sub previousBranch {
-	return adjacentBranch(\&previousStage, shift @_);
-}
-
-sub previousStage {
-	return adjacentStage(sub{$_[0] - 1}, shift @_);
 }
 
 sub currentBranch {
