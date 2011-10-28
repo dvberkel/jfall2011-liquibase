@@ -21,14 +21,14 @@ sub nextBranch {
 
 sub adjacentBranch {
 	my $adjacentStage = shift @_;
-	my $nextBranch = shift @_;
-	if ($nextBranch =~ m/(.+)(-)(\d+)/) {
+	my $adjacentBranch = shift @_;
+	if ($adjacentBranch =~ m/(.+)(-)(\d+)/) {
 		my $branchName = $1;
 		my $separator = $2;
 		my $stage = $3;
-		$nextBranch = $branchName . $separator . $adjacentStage->($stage);
+		$adjacentBranch = $branchName . $separator . $adjacentStage->($stage);
 	}
-	return $nextBranch;
+	return $adjacentBranch;
 }
 
 sub nextStage {
@@ -38,12 +38,12 @@ sub nextStage {
 sub adjacentStage {
 	my $operator = shift @_;
 	my $stage = shift @_;
-	my $nextStage = $operator->(scalar($stage));
+	my $adjacentStage = $operator->(scalar($stage));
 	
-	if ($nextStage < 10) {
-		return "0$nextStage";
+	if ($adjacentStage < 10) {
+		return "0$adjacentStage";
 	} else {
-		return "$nextStage";
+		return "$adjacentStage";
 	}
 }
 
