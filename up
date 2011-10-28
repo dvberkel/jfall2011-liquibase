@@ -3,12 +3,24 @@
 use strict;
 use warnings;
 
+
 my $nextBranch = currentBranch();
 print $nextBranch;
 if ($nextBranch =~ m/([^-]+)-(\d+)/) {
 	my $branchName = $1;
 	my $stage = $2;
 	print "$branchName $stage\n";
+}
+
+sub nextStage {
+	my $stage = shift @_;
+	my $nextStage = scalar($stage) + 1;
+	
+	if ($nextStage < 10) {
+		return "0$nextStage";
+	} else {
+		return "$nextStage";
+	}
 }
 
 sub currentBranch {
