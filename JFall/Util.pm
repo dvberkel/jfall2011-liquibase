@@ -32,8 +32,13 @@ sub adjacentBranch {
 }
 
 sub nextStage {
+	return adjacentStage(sub{$_[0] + 1}, shift @_);
+}
+
+sub adjacentStage {
+	my $operator = shift @_;
 	my $stage = shift @_;
-	my $nextStage = scalar($stage) + 1;
+	my $nextStage = $operator->(scalar($stage));
 	
 	if ($nextStage < 10) {
 		return "0$nextStage";
@@ -47,14 +52,7 @@ sub previousBranch {
 }
 
 sub previousStage {
-	my $stage = shift @_;
-	my $nextStage = scalar($stage) - 1;
-	
-	if ($nextStage < 10) {
-		return "0$nextStage";
-	} else {
-		return "$nextStage";
-	}
+	return adjacentStage(sub{$_[0] - 1}, shift @_);
 }
 
 sub currentBranch {
