@@ -30,7 +30,7 @@
  
 	<changeSet id="jfall-1a" author="dvb">
 		<addForeignKeyConstraint 
-			constraintName="fk_address_person"
+			constraintName="author"
 			baseTableName="message" baseColumnNames="author"
 			referencedTableName="user" referencedColumnNames="id"
 		/>
