@@ -16,8 +16,7 @@ sub checkout {
 }
 
 sub nextBranch {
-	my $branch = shift @_;
-	return adjacentBranch(\&nextStage, $branch);
+	return adjacentBranch(\&nextStage, shift @_);
 }
 
 sub adjacentBranch {
@@ -44,14 +43,7 @@ sub nextStage {
 }
 
 sub previousBranch {
-	my $nextBranch = shift @_;
-	if ($nextBranch =~ m/(.+)(-)(\d+)/) {
-		my $branchName = $1;
-		my $separator = $2;
-		my $stage = $3;
-		$nextBranch = $branchName . $separator . previousStage($stage);
-	}
-	return $nextBranch;
+	return adjacentBranch(\&previousStage, shift @_);
 }
 
 sub previousStage {
