@@ -27,7 +27,7 @@
 			<column name="author" type="int"/>
 		</createTable>
 		<addForeignKeyConstraint 
-			constraintName="fk_address_person"
+			constraintName="author"
 			baseTableName="message" baseColumnNames="author"
 			referencedTableName="user" referencedColumnNames="id"
 		/>
