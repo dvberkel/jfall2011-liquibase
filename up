@@ -3,7 +3,13 @@
 use strict;
 use warnings;
 
-print currentBranch();
+my $nextBranch = currentBranch();
+print $nextBranch;
+if ($nextBranch =~ m/([^-]+)-(\d+)/) {
+	my $branchName = $1;
+	my $stage = $2;
+	print "$branchName $stage\n";
+}
 
 sub currentBranch {
 	my $currentBranch = '';
