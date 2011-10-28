@@ -24,7 +24,7 @@
 				<constraints primaryKey="true" nullable="false"/>
 			</column>
 			<column name="body" type="varchar(1024)"/>
-			<column name="author" type="int"/>
+			<column name="author" type="bigint"/>
 		</createTable>
 	</changeSet>
  
